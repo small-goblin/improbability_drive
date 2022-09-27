@@ -7,13 +7,13 @@ auth=""
 # todo: this could be made a little kinder to the vrchat api
 # on closer expection "shuffle" isn't very random, so we introduce our own randomness 
 curl 'https://vrchat.com/api/1/worlds?maxUnityVersion=2019.4.31f1&sort=shuffle&tag=system_approved&order=descending&n=100' \
--X 'GET' \
--H "Cookie: apiKey=${apiKey}; auth=${auth}" \
--H 'Accept: application/json; charset=utf-8' \
--H 'Host: vrchat.com' \
--H 'User-Agent: Improbability Drive Mk.1' \
--H 'Connection: keep-alive' \
---output - \
+    -X 'GET' \
+    -H "Cookie: apiKey=${apiKey}; auth=${auth}" \
+    -H 'Accept: application/json; charset=utf-8' \
+    -H 'Host: vrchat.com' \
+    -H 'User-Agent: Improbability Drive Mk.1' \
+    -H 'Connection: keep-alive' \
+    --output - \
 | jq ".[${rann}]" > world.json 
 
 # bot data
